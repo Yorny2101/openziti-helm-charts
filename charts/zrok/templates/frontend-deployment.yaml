@@ -20,6 +20,10 @@ spec:
       labels:
         {{- include "zrok.selectorLabelsFrontend" . | nindent 8 }}
     spec:
+      hostAliases:
+        - ip: "192.168.20.8"
+          hostnames:
+            - "controller.ziti.local"
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
